@@ -1,10 +1,8 @@
 # Node Guardrails
 
-`@agentic-orch/node-guardrails` contains small, domain-independent Node.js security primitives used by the
-Agent Blocks, Drone, Templar, and Nexus projects. It has no runtime dependencies and does not prescribe an
-application error model, schema library, or Effect runtime.
-
-> Status: private local workspace module; npm publication is intentionally disabled.
+`@agentic-orch/node-guardrails` contains small, domain-independent Node.js security primitives. It has
+no runtime dependencies and does not prescribe an application error model, schema library, or Effect
+runtime. Sibling repositories link it with `workspace:*`; see the catalog README for the layout.
 
 ## Public subpaths
 
@@ -51,6 +49,6 @@ pnpm install --frozen-lockfile
 pnpm check
 ```
 
-The pack check compiles declarations, verifies the root and all subpath exports, installs a
-temporary tarball, and smoke-tests its runtime and TypeScript entry points. The tarball is only a
-clean-room boundary test for local consumers.
+The exports point at the compiled `dist/`. A `prepare` script builds it on `pnpm install`, including
+when a sibling repository installs this one as a workspace project, so no manual build step is
+needed before a consumer typechecks or tests. Run `pnpm build` after editing `src/` to refresh it.
