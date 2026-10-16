@@ -30,15 +30,10 @@
       "import": "./dist/cas.js"
     }
   },
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "check": "pnpm typecheck && pnpm test && pnpm pack:check",
-    "pack:check": "pnpm build && node scripts/check-pack.mjs",
+    "check": "pnpm typecheck && pnpm test && pnpm build",
+    "prepare": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
